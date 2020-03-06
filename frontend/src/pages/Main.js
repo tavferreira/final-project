@@ -9,9 +9,9 @@ export const Main = () => {
         "client_id=" +
         CLIENT_ID +
         "&redirect_uri=http://localhost:3000/callback" +
-        "&scope=accounts:read,transactions:read,investments:read,user:read" +
+        "&scope=accounts:read" +
         ssnData +
-        "&market=SE&locale=en_US&test=true"
+        "&market=SE&locale=en_US"
 
     return (
         <div>

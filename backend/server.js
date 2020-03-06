@@ -55,16 +55,19 @@ const handleResponse = async (response) => {
 
 const getData = async (accessToken) => {
   const [
-    accountData,
-    loanData
+    loanData,
+    loanEvents,
+    loanHistory
   ] = await Promise.all([
-    getAccountData(accessToken),
-    getLoansData(accessToken)
+    getLoansData(accessToken),
+    getLoansEvents(accessToken),
+    getLoansHistory(accessToken)
   ])
 
   return {
-    accountData,
-    loanData
+    loanData,
+    loanEvents,
+    loanHistory
   }
 }
 
@@ -104,6 +107,30 @@ const getAccountData = async (token) => {
 
 const getLoansData = async (token) => {
   const response = await fetch(base + "/loans", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token
+    }
+  })
+    .catch(err => console.log(err))
+
+  return handleResponse(response);
+}
+
+const getLoansEvents = async (token) => {
+  const response = await fetch(base + "/loans/events", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token
+    }
+  })
+    .catch(err => console.log(err))
+
+  return handleResponse(response);
+}
+
+const getLoansHistory = async (token) => {
+  const response = await fetch(base + "/loans/timelines", {
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
