@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { loans } from '../reducers/loans'
 import { Link } from 'react-router-dom'
 import { Ammortization } from '../components/Ammortization'
+import { Payments } from '../components/Payments'
 
 export const Main = () => {
     const dispatch = useDispatch()
@@ -12,6 +13,7 @@ export const Main = () => {
     const setLoan = (event) => {
         event.preventDefault()
 
+        dispatch(loans.actions.reset())
         dispatch(loans.actions.setLoanValue(loanValue))
         dispatch(loans.actions.setSlices(slice))
     }
@@ -40,6 +42,7 @@ export const Main = () => {
                 </button>
             </form>
             <Ammortization />
+            <Payments />
         </div>
     )
 }
