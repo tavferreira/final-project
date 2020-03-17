@@ -7,8 +7,7 @@ const initialState = {
     slices: 1,
     years: 0,
     avgift: 0,
-    loanSlices: [],
-    payments: []
+    loanSlices: []
 }
 
 export const loans = createSlice({
@@ -21,7 +20,7 @@ export const loans = createSlice({
             for (let i = 0; i < state.slices; i++) {
                 let temp = {}
 
-                temp.id = i + 1
+                temp.id = i
                 if (i !== state.slices - 1) {
                     temp.value = Math.round(state.loanValue / state.slices)
                     temp.ammortization = Math.round((state.minimumAmmortization / state.slices) / 12)
@@ -32,9 +31,60 @@ export const loans = createSlice({
                 }
                 temp.interest = 0.0169
                 temp.fixed = 1
+                temp.payments = []
 
                 state.loanSlices.push(temp)
             }
+        },
+        calculatePayments: (state, action) => {
+            const { id } = action.payload
+
+            state.loanSlices.map(slice => {
+                if (slice.id === id) {
+                    slice.payments = []
+
+                    for (let i = 0; i < slice.fixed * 12; i++) {
+                        let month = i + 1
+                        let leftToPay = slice.value - (slice.ammortization * i)
+                        let interest = Math.round(leftToPay * slice.interest / (slice.fixed * 12))
+                        let temp = { slice: slice.id, month, leftToPay, interest, ammortization: slice.ammortization }
+
+                        slice.payments.push(interest)
+                    }
+                }
+            })
+        },
+        setSliceValue: (state, action) => {
+            const { id, value } = action.payload
+
+            state.loanSlices.map(slice => {
+                if (slice.id === id)
+                    slice.value = value
+            })
+        },
+        setSliceInterest: (state, action) => {
+            const { id, interest } = action.payload
+
+            state.loanSlices.map(slice => {
+                if (slice.id === id)
+                    slice.interest = interest
+            })
+        },
+        setSliceAmmortization: (state, action) => {
+            const { id, ammortization } = action.payload
+
+            state.loanSlices.map(slice => {
+                if (slice.id === id)
+                    slice.ammortization = ammortization
+            })
+        },
+        setSliceFixed: (state, action) => {
+            const { id, fixed } = action.payload
+
+            state.loanSlices.map(slice => {
+                if (slice.id === id)
+                    slice.fixed = fixed
+            })
         },
         setPayments: (state, action) => {
             state.loanSlices.map(loan => {
