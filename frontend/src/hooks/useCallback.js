@@ -8,6 +8,8 @@ export const useCallback = ({ search }) => {
     loading: false
   });
 
+  const backendURL = process.env.BACKEND_URL || "http://localhost:8080"
+
   useEffect(() => {
     async function getData(code) {
       try {
@@ -15,7 +17,7 @@ export const useCallback = ({ search }) => {
           ...oldState,
           loading: true
         }));
-        const response = await fetch("http://localhost:8080/callback", {
+        const response = await fetch(`${backendURL}/callback`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ code })
