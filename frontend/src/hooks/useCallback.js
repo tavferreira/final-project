@@ -17,7 +17,7 @@ export const useCallback = ({ search }) => {
           ...oldState,
           loading: true
         }));
-        const response = await fetch(`${backendURL}/callback`, {
+        const response = await fetch("https://technigo-final-project-backend.herokuapp.com//callback", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ code })

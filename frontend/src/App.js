@@ -20,7 +20,7 @@ function App() {
         <Route exact path='/'>
           <Main />
         </Route>
-        <Route exact path='/callback'>
+        <Route path='/callback'>
           <Callback />
         </Route>
         <Route exact path='/connect'>
