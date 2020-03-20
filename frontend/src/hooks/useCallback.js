@@ -8,7 +8,7 @@ export const useCallback = ({ search }) => {
     loading: false
   });
 
-  const backendURL = process.env.BACKEND_URL || "http://localhost:8080"
+  const backendURL = process.env.BACKEND_URL || "https://technigo-final-project-backend.herokuapp.com"
 
   useEffect(() => {
     async function getData(code) {
