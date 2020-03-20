@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loans } from '../reducers/loans'
+import { Link } from 'react-router-dom'
 import { Button, Input, FormControl, FormHelperText, InputAdornment } from '@material-ui/core'
 import Styled from 'styled-components/macro'
 
@@ -35,9 +36,11 @@ export const LoanValue = () => {
                 />
                 <FormHelperText id="loan-value-helper-text">Total loan value</FormHelperText>
             </FormControl>
-            <Button color="secondary" href='/connect'>
-                Connect your bank
+            <Link to='/connect'>
+                <Button color="secondary">
+                    Connect your bank
             </Button>
+            </Link>
             <Button onClick={setLoan} variant="contained" color="primary" size="large">
                 Next
             </Button>
