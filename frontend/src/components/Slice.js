@@ -59,6 +59,7 @@ export const Slice = ({ slice }) => {
                         InputProps={{
                             endAdornment: <InputAdornment position="end">kr</InputAdornment>,
                         }}
+                        style={{ width: '12ch' }}
                     />
                 </Separator>
                 <Separator>
@@ -67,6 +68,7 @@ export const Slice = ({ slice }) => {
                             value={interest}
                             onChange={e => changeInterest(e.target.value)}
                             endAdornment={<InputAdornment position="end">%</InputAdornment>}
+                            style={{ width: '8ch' }}
                         />
                         <FormHelperText id="loan-slice-value-helper-text">Interest</FormHelperText>
                     </FormControl>
@@ -77,6 +79,7 @@ export const Slice = ({ slice }) => {
                             value={ammortization}
                             onChange={e => changeAmmortization(e.target.value)}
                             endAdornment={<InputAdornment position="end">kr</InputAdornment>}
+                            style={{ width: '16ch' }}
                         />
                         <FormHelperText id="loan-slice-value-helper-text">Monthly ammortization</FormHelperText>
                     </FormControl>
@@ -86,6 +89,7 @@ export const Slice = ({ slice }) => {
                         value={fixed}
                         onChange={e => changeFixed(e.target.value)}
                         endAdornment={<InputAdornment position="end">months</InputAdornment>}
+                        style={{ width: '10ch' }}
                     />
                     <FormHelperText id="loan-slice-value-helper-text">Binding period</FormHelperText>
                 </FormControl>

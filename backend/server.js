@@ -21,10 +21,6 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, "../frontend/build")))
 app.use(bodyParser.json())
 
-/* app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-}) */
-
 // Start defining your routes here
 app.get('/', (req, res) => {
   res.send('Hello world')
@@ -55,19 +51,13 @@ const handleResponse = async (response) => {
 
 const getData = async (accessToken) => {
   const [
-    loanData,
-    loanEvents,
-    loanHistory
+    loanData
   ] = await Promise.all([
-    getLoansData(accessToken),
-    getLoansEvents(accessToken),
-    getLoansHistory(accessToken)
+    getLoansData(accessToken)
   ])
 
   return {
-    loanData,
-    loanEvents,
-    loanHistory
+    loanData
   }
 }
 
@@ -95,30 +85,6 @@ const getAccessToken = async (code) => {
 
 const getLoansData = async (token) => {
   const response = await fetch(base + "/loans", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    }
-  })
-    .catch(err => console.log(err))
-
-  return handleResponse(response);
-}
-
-const getLoansEvents = async (token) => {
-  const response = await fetch(base + "/loans/events", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    }
-  })
-    .catch(err => console.log(err))
-
-  return handleResponse(response);
-}
-
-const getLoansHistory = async (token) => {
-  const response = await fetch(base + "/loans/timelines", {
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token

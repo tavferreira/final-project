@@ -5,6 +5,18 @@ import Styled from 'styled-components/macro'
 const Container = Styled.div`
     display: flex;
     flex-direction: column;
+    font-size: 12px;
+`
+const Subheader = Styled.h4`
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 2px solid black;
+    margin: 10px 0px;
+`
+
+const Totals = Styled.p`
+    margin: 6px 0px;
+    font-weight: 300;
 `
 
 export const PaymentSlice = ({ paymentIndex }) => {
@@ -14,9 +26,9 @@ export const PaymentSlice = ({ paymentIndex }) => {
         <Container>
             {loanSlices.map((slice, index) => (
                 <div key={`payment${paymentIndex}slice${index}`}>
-                    <h3>Loan part {index + 1}</h3>
-                    <p>Ammortization: {slice.ammortization}</p>
-                    <p>Interest: {slice.payments[paymentIndex]}</p>
+                    <Subheader>Loan part {index + 1}</Subheader>
+                    <Totals>Ammortization: {slice.ammortization}</Totals>
+                    <Totals>Interest: {slice.payments[paymentIndex]}</Totals>
                 </div>
             ))}
         </Container>
