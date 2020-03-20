@@ -93,18 +93,6 @@ const getAccessToken = async (code) => {
   return handleResponse(response);
 }
 
-const getAccountData = async (token) => {
-  const response = await fetch(base + "/accounts/list", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    }
-  })
-    .catch(err => console.log(err))
-
-  return handleResponse(response);
-}
-
 const getLoansData = async (token) => {
   const response = await fetch(base + "/loans", {
     headers: {

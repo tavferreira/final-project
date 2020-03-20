@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 export const useCallback = ({ search }) => {
   const queryCode = new URLSearchParams(search).get("code");
-  console.log("useCallback: " + queryCode)
   const [state, setState] = useState({
     data: undefined,
     error: undefined,
@@ -25,21 +24,18 @@ export const useCallback = ({ search }) => {
         const data = await response.json();
 
         if (response.status === 200) {
-          console.log("200")
           return setState(oldState => ({
             ...oldState,
             loading: false,
             data
           }));
         }
-        console.log("Not 200")
         return setState(oldState => ({
           ...oldState,
           loading: false,
           error: data.message
         }));
       } catch (error) {
-        console.log("error")
         return setState(oldState => ({
           ...oldState,
           loading: false,
