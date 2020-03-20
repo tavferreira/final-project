@@ -16,7 +16,7 @@ export const ConnectBank = () => {
     const [test, setTest] = useState(false)
 
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
-    const REDIRECT_URL = process.env.REDIRECT_URL
+    const REDIRECT_URL = process.env.REDIRECT_URL || "https://technigo-final-project-backend.herokuapp.com/"
 
     const ssnData = ssn !== '' ? "&input_username=" + ssn : ""
     const providerData = bank !== '' ? "&input_provider=" + bank : ""
