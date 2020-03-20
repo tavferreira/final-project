@@ -16,7 +16,7 @@ export const ConnectBank = () => {
     const [test, setTest] = useState(false)
 
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
-    const REDIRECT_URL = process.env.REDIRECT_URL || "https://nostalgic-ritchie-4c5f4d.netlify.com"
+    const REDIRECT_URL = process.env.REDIRECT_URL || "https://tavferreira-final-project.netlify.com"
 
     const ssnData = ssn !== '' ? "&input_username=" + ssn : ""
     const providerData = bank !== '' ? "&input_provider=" + bank : ""
