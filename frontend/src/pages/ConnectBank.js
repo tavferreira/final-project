@@ -16,6 +16,7 @@ export const ConnectBank = () => {
     const [test, setTest] = useState(false)
 
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+    const REDIRECT_URL = process.env.REDIRECT_URL
 
     const ssnData = ssn !== '' ? "&input_username=" + ssn : ""
     const providerData = bank !== '' ? "&input_provider=" + bank : ""
@@ -25,7 +26,7 @@ export const ConnectBank = () => {
         "https://link.tink.com/1.0/authorize/?" +
         "client_id=" +
         CLIENT_ID +
-        "&redirect_uri=http://localhost:3000/callback" +
+        `&redirect_uri=${REDIRECT_URL}/callback` +
         "&scope=accounts:read" +
         ssnData +
         providerData +
