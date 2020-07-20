@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loans } from '../reducers/loans'
-import { Link } from 'react-router-dom'
 import { Button, Input, FormControl, FormHelperText, InputAdornment } from '@material-ui/core'
 import Styled from 'styled-components/macro'
 

@@ -8,8 +8,6 @@ export const useCallback = ({ search }) => {
     loading: false
   });
 
-  const backendURL = process.env.BACKEND_URL || "https://technigo-final-project-backend.herokuapp.com"
-
   useEffect(() => {
     async function getData(code) {
       try {
@@ -17,7 +15,7 @@ export const useCallback = ({ search }) => {
           ...oldState,
           loading: true
         }));
-        const response = await fetch(`${backendURL}/callback`, {
+        const response = await fetch('https://technigo-final-project-backend.herokuapp.com/callback', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ code })

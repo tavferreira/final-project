@@ -57,7 +57,7 @@ export const Loans = ({ data }) => {
         return (
             <Main>
                 <Paper>
-                    <Header>Oh no! This is embarassing... 😓</Header>
+                    <Header>Oh no! This is embarassing... <span role="img" aria-label="Error">😓</span></Header>
                     <Container>
                         <Separator>Let's start over?</Separator>
                         <Button variant="contained" color="secondary" size="large" href='/'>
