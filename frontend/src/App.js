@@ -6,6 +6,7 @@ import { loans } from './reducers/loans'
 import { Main } from './pages/Main'
 import { Callback } from './pages/Callback'
 import { ConnectBank } from './pages/ConnectBank'
+import { Iframe } from './pages/Iframe'
 
 const reducer = combineReducers({
   loans: loans.reducer
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path='/connect'>
           <ConnectBank />
+        </Route>
+        <Route exact path='/iframe'>
+          <Iframe />
         </Route>
       </Switch>
     </Provider>
