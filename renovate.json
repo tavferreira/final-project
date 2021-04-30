@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "addLabels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["major"],
+      "prPriority": 3
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "labels": ["minor"],
+      "prPriority": 2
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "labels": ["patch"],
+      "prPriority": 1
+    }
+  ]
+}
