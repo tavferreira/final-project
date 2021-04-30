@@ -3,4 +3,8 @@
     "config:base"
   ],
   "addLabels": ["dependencies"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+  "prCreation": "not-pending"
 }
